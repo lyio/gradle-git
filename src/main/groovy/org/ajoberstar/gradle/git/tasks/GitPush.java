@@ -44,7 +44,7 @@ public class GitPush extends GitBase implements AuthenticationSupported {
 	private boolean pushTags = false;
 	private boolean pushAll = false;
 	private boolean force = false;
-	
+
 	/**
 	 * Pushes changes to a remote repository.
 	 */
@@ -74,7 +74,7 @@ public class GitPush extends GitBase implements AuthenticationSupported {
 		}
 		//TODO add progress monitor to go to Gradle status bar
 	}
-	
+
 	/**
 	 * Gets the credentials to use when pushing changes.
 	 * @return the credentials
@@ -84,7 +84,7 @@ public class GitPush extends GitBase implements AuthenticationSupported {
 	public PasswordCredentials getCredentials() {
 		return credentials;
 	}
-	
+
 	/**
 	 * Configures the credentials to use when pushing changes.
 	 * This will be passed a {@link PasswordCredentials} instance.
@@ -94,7 +94,7 @@ public class GitPush extends GitBase implements AuthenticationSupported {
 	public void credentials(Closure closure) {
 		ConfigureUtil.configure(closure, getCredentials());
 	}
-	
+
 	/**
 	 * Sets the credentials to use when pushing changes.
 	 * @param credentials the credentials
@@ -102,7 +102,7 @@ public class GitPush extends GitBase implements AuthenticationSupported {
 	public void setCredentials(PasswordCredentials credentials) {
 		this.credentials = credentials;
 	}
-	
+
 	/**
 	 * Gets the remote to push to. Defaults to "origin".
 	 * @return the remote to push to
@@ -111,7 +111,7 @@ public class GitPush extends GitBase implements AuthenticationSupported {
 	public String getRemote() {
 		return remote == null ? "origin" : ObjectUtil.unpackString(remote);
 	}
-	
+
 	/**
 	 * Sets the remote to push to.
 	 * @param remote the remote to push to
@@ -145,7 +145,7 @@ public class GitPush extends GitBase implements AuthenticationSupported {
 	 * @param namesOrSpecs Names or specs
 	 */
 	public void namesOrSpecs(String... namesOrSpecs) {
-		if (namesOrSpecs == null) {
+		if (this.namesOrSpecs == null) {
 			this.namesOrSpecs = Arrays.asList(namesOrSpecs);
 		} else {
 			Collections.addAll(this.namesOrSpecs, namesOrSpecs);
@@ -160,7 +160,7 @@ public class GitPush extends GitBase implements AuthenticationSupported {
 	public boolean isPushTags() {
 		return pushTags;
 	}
-	
+
 	/**
 	 * Sets whether tags will also be pushed.
 	 * @param pushTags whether to push tags
@@ -168,7 +168,7 @@ public class GitPush extends GitBase implements AuthenticationSupported {
 	public void setPushTags(boolean pushTags) {
 		this.pushTags = pushTags;
 	}
-	
+
 	/**
 	 * Gets whether to push all branches.
 	 * @return whether to push all branches
@@ -177,7 +177,7 @@ public class GitPush extends GitBase implements AuthenticationSupported {
 	public boolean isPushAll() {
 		return pushAll;
 	}
-	
+
 	/**
 	 * Sets whether to push all branches.
 	 * @param pushAll whether to push all branches
@@ -185,7 +185,7 @@ public class GitPush extends GitBase implements AuthenticationSupported {
 	public void setPushAll(boolean pushAll) {
 		this.pushAll = pushAll;
 	}
-	
+
 	/**
 	 * Gets whether to force the push.
 	 * @return whether to force the push
@@ -194,7 +194,7 @@ public class GitPush extends GitBase implements AuthenticationSupported {
 	public boolean isForce() {
 		return force;
 	}
-	
+
 	/**
 	 * Sets whether to force the push.
 	 * @param force whether to force the push

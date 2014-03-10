@@ -159,6 +159,9 @@ github.credentials.password = password
 
 ## Release Notes
 
+**v0.6.5**
+* Fixing `GitPush.namesOrSpecs(String...)` to avoid NPE.
+
 **v0.6.4**
 * Adding `targetPath` property to `github-pages` plugin to allow pushing to branches besides `gh-pages`. Contributed by [Alexander Heusingfeld](https://github.com/aheusingfeld)
 * Fix to bypass SSHAgentConnector in certain situations where correct libraries aren't in place.
