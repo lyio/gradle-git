@@ -16,8 +16,25 @@
 package org.ajoberstar.gradle.git.semver
 
 import org.ajoberstar.grgit.Grgit
+import com.github.zafarkhaja.semver.Version
 
 class InferredVersion {
+	private Version inferredVersion = null
+
+	Grgit grgit
+	Set<String> stages = ['alpha', 'beta', 'rc']
+
+	Callable<Boolean> useBuildMetadata = { version -> !version.preReleaseVersion.empty }
+	Callable<String> buildMetadata = { grgit.head().id }
+
+
+	void infer(ChangeScope scope, String stage) {
+
+	}
+
+
+
+
 	Grgit grgit
 	ReleaseType releaseType
 	String preReleaseType
@@ -25,10 +42,14 @@ class InferredVersion {
 
 	@Override
 	String toString() {
-		return version
+		if (inferredVersion) {
+			return inferredVersion
+		} else {
+			throw new InvalidStateException("Version has not been inferred.")
+		}
 	}
 
-	static enum ReleaseType {
+	static enum ChangeScope {
 		MAJOR,
 		MINOR,
 		PATCH
